@@ -14,8 +14,9 @@ public class BulletHoming : BulletBase
     {
         UpdateBulletValue();
         this.transform.position = BasePosition;
-        _direction = (_target.position - transform.position).normalized;
+        _direction = ((_target.position + (Vector3.up * 0.5f)) - transform.position).normalized;
         BulletForward = Vector3.Lerp(BulletForward, _direction, _homingPower * Time.fixedDeltaTime);
+        this.transform.rotation = Quaternion.LookRotation(-_direction, Vector3.up);
     }
 
     public virtual void SetBulletValue(Transform firePos, float moveSpeed, float homingPower, Transform target)

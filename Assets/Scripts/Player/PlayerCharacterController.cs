@@ -82,7 +82,6 @@ namespace PlayerCharacter
             //m_BulletReroadCount = m_BulletCurrentCount;
             rigid = this.GetComponent<Rigidbody>();
             StartCoroutine("CorWalkShaking");
-            StartCoroutine("CorFlash");
         }
 
         // Update is called once per frame
