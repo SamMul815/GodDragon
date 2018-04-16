@@ -70,7 +70,8 @@ namespace PlayerCharacter
 
             if(_PlayerUpdateState == PLAYERUPDATESTATE.JUMP && _PlayerState != PLAYERSTATE.FALLING )
             {
-                rigid.AddForce(Vector3.up * 20, ForceMode.Impulse);
+                rigid.velocity = new Vector3(rigid.velocity.x, 0.0f, rigid.velocity.z);
+                rigid.AddForce(Vector3.up * 10, ForceMode.Impulse);
                 _PlayerUpdateState = PLAYERUPDATESTATE.NONE;
             }
             _PlayerUpdateState = PLAYERUPDATESTATE.NONE;
@@ -102,13 +103,14 @@ namespace PlayerCharacter
         {
             CapsuleCollider capCol = GetComponent<CapsuleCollider>();
             Ray ray = new Ray(this.transform.position +capCol.center, Vector3.down);
-            if(Physics.SphereCast(ray,capCol.radius * 0.95f,capCol.height * 0.7f ))
+            if(Physics.SphereCast(ray,capCol.radius * 0.95f,capCol.height * 0.5f ))
             {
                 return false;
             }
             else
             {
                 Debug.Log("Falling");
+                rigid.velocity += Physics.gravity * Time.fixedDeltaTime;
                 return true;                
             }
         }

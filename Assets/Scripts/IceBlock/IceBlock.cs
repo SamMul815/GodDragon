@@ -4,7 +4,7 @@ using UnityEngine;
 public class IceBlock : MonoBehaviour {
 
     public float SizeupSpeed;
-    public bool isSpawn;
+    bool isSpawn;
     public float _Hp;
     public GameObject _PrismBrokenPrefab;
 
@@ -20,6 +20,11 @@ public class IceBlock : MonoBehaviour {
         _Hp -= Damage;
         if(_Hp <= 0 && !isDead)
         {
+            if(_PrismBrokenPrefab == null)
+            {
+                Debug.LogWarning("Not Found _PrismBrokenPrefab");
+                return;
+            }
             isDead = true;
             Instantiate(_PrismBrokenPrefab,this.transform.position,Quaternion.identity);
             Destroy(this.gameObject);
@@ -35,12 +40,15 @@ public class IceBlock : MonoBehaviour {
     IEnumerator CorSpawnEvent()
     {
         float _sizeTime = 0.0f;
-        while(_sizeTime < 1)
+        while(_sizeTime < 2)
         {
+            //this.GetComponent<Renderer>().material.SetFloat("_Metallic", _sizeTime);
+            this.transform.localScale = new Vector3(_sizeTime,_sizeTime,_sizeTime);
+            //this.transform.localScale.
             _sizeTime += Time.fixedDeltaTime * SizeupSpeed;
-            this.GetComponent<Renderer>().material.SetFloat("_Metallic", _sizeTime);
             yield return new WaitForEndOfFrame();
         }
+        this.transform.localScale = new Vector3(2, 2, 2);
         isSpawn = true;
     }
 }

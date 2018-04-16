@@ -285,16 +285,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Effect\breath\shader\Billboard.cs" />
+    <Compile Include="Assets\Scripts\Bullet\Breath.cs" />
     <Compile Include="Assets\Scripts\Bullet\BulletBase.cs" />
     <Compile Include="Assets\Scripts\Bullet\BulletHoming.cs" />
     <Compile Include="Assets\Scripts\Bullet\BulletRotate.cs" />
     <Compile Include="Assets\Scripts\Bullet\BulletWave.cs" />
     <Compile Include="Assets\Scripts\IceBlock\IceBlock.cs" />
     <Compile Include="Assets\Scripts\Manager\BulletManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\BulletManagerTest.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerBulletFire.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerChacterMove.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerCharacterCamera.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerCharacterController.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Effect\breath\shader\002.shader" />
+    <None Include="Assets\Effect\missile\shader\002.shader" />
+    <None Include="Assets\Effect\missile\shader\GlassStainedBumpDistort.shader" />
+    <None Include="Assets\Effect\missile\shader\Reflection.shader" />
+    <None Include="Assets\Effect\missile\shader\ice_reflection.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
